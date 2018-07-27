@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FileDownLoader</string>
+    <string name="android_auto_update_dialog_title">Discover the new version</string>
+    <string name="android_auto_update_dialog_btn_download">Update</string>
+    <string name="android_auto_update_dialog_btn_cancel">Cancel</string>
+    <string name="android_auto_update_download_progress">DownLoading:%1$d%%</string>
+    <string name="android_auto_update_dialog_checking">Checking version</string>
+    <string name="download_new_version">Download the new version</string>
+</resources>

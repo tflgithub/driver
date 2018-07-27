@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_line">
+
+
+    <TextView
+        android:id="@+id/tv_site_id"
+        style="@style/text_style_15sp_black_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/x5"
+        android:text="STE" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/text_style_18sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_site_id"
+        android:padding="@dimen/x5"
+        android:text="ddd" />
+
+    <TextView
+        android:id="@+id/tv_area"
+        style="@style/text_style_18sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_name"
+        android:padding="@dimen/x5"
+        android:text="ddd" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        style="@style/text_style_18sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_area"
+        android:drawableLeft="@drawable/location_green_32"
+        android:drawablePadding="@dimen/x5"
+        android:padding="@dimen/x5"
+        android:text="ddd" />
+
+
+
+    <ImageButton
+        android:id="@+id/ib_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/ib_call"
+        android:background="@null"
+        android:padding="@dimen/x5"
+        android:src="@drawable/share" />
+
+    <ImageButton
+        android:id="@+id/ib_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:padding="@dimen/x5"
+        android:src="@drawable/phone_selector" />
+
+
+
+    <LinearLayout
+        android:id="@+id/work_status_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center|right"
+        android:orientation="vertical"
+        android:padding="@dimen/x5" />
+
+</RelativeLayout>

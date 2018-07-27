@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar" />
+
+
+    <LinearLayout
+        android:id="@+id/ly_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@drawable/border_line"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_debt"
+            style="@style/text_style_12sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line"
+            android:padding="@dimen/x15"
+            android:text="DEBT(AED 0)" />
+
+        <TextView
+            android:id="@+id/tv_pending"
+            style="@style/text_style_12sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_selector"
+            android:padding="@dimen/x15"
+            android:text="PENDING(AED 0)" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.freedom.yefeng.yfrecyclerview.YfListRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/y10"
+            android:cacheColorHint="@null"
+            android:scrollbars="vertical" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_paid_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/y8"
+                android:background="@drawable/bg_edittext"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x100"
+                android:paddingTop="@dimen/y10"
+                android:textColor="#1A1A1A"
+                android:text="0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_paid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/y15"
+                android:text="Total for transfer:"
+                android:textColor="#1A1A1A"
+                android:textSize="12sp" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/x5">
+
+            <TextView
+                android:id="@+id/tv_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:gravity="center"
+                android:text="SELECTED:"
+                android:textColor="#1A1A1A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_select_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_select"
+                android:text="0"
+                android:textColor="#1A1A1A"
+                android:textSize="12sp" />
+
+
+            <Button
+                android:id="@+id/btn_debt"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y30"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/scan_btn_selector"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="Transfer"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y30"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toLeftOf="@+id/btn_debt"
+                android:background="@drawable/scan_btn_selector"
+                android:gravity="center"
+                android:padding="@dimen/x5"
+                android:text="select all"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

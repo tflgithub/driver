@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.ActivityHandwrittenSignFor">
+    <item
+        android:id="@+id/action_over"
+        android:icon="@drawable/selector_check_ok"
+        android:orderInCategory="80"
+        android:title="action over"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_clear"
+        android:icon="@drawable/selector_draw_clear"
+        android:orderInCategory="80"
+        android:title="action clear"
+        app:showAsAction="ifRoom" />
+</menu>

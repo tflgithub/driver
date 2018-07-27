@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/y60"
+        android:src="@drawable/head_title" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/x5"
+        android:ems="10"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/y5"
+        android:layout_marginTop="@dimen/y15"
+        android:ems="10"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/y10"
+        android:background="@drawable/btn_selector"
+        android:enabled="false"
+        android:text="Login"
+        android:textColor="@color/light_green" />
+
+</LinearLayout>

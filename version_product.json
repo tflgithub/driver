@@ -1,0 +1,8 @@
+{
+  "commit": "SOME HASH",
+  "url":"http://resources.fo-del.com/update/apk/driver/driver_product.apk",
+  "versionCode":1,
+  "versionName":"v1.0",
+  "updateMessage":"1. change the style of the carrier",
+  "forceUpdate":1
+}

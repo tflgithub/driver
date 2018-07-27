@@ -1,0 +1,154 @@
+image: jangrewe/gitlab-ci-android
+
+stages:
+  - local
+  - staging
+  - training
+  - product
+
+before_script:
+  - export GRADLE_USER_HOME=$(pwd)/.gradle
+  - chmod +x ./gradlew
+  - echo "Updating licenses"
+  - cp -rf licenses/. $ANDROID_HOME/licenses
+  - ls $ANDROID_HOME/licenses
+  - echo "Licenses updated"
+  
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+    - .gradle/
+
+build_local:
+  variables:
+    API_URL: "http://192.168.0.107:8080"
+    GOOGLE_API_KEY_PARA: "AIzaSyBbkNEJlYAhdZc-9d2T3tM9OuFxuT-bsNE"
+    UPGRADE_URL: "http://resources2.test.fo-del.com/update/apk/driver/version_$CI_JOB_STAGE.json"
+
+  stage: local
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - apt-get -qq update && apt-get install -qqy jq
+    - export VERSION_NAME=`jq -r .versionName version_$CI_JOB_STAGE.json`
+    - export VERSION_CODE=`jq -r .versionCode version_$CI_JOB_STAGE.json`
+    - export CI_COMMIT_SHA_SHOT_NAME=${CI_COMMIT_SHA:0:8}
+    - echo "./gradlew assembleStagingRelease -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#003399 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL"
+    - ./gradlew assembleStagingRelease -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#003399 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL
+    - ls app/build/outputs/apk/
+    - mv app/build/outputs/apk/*.apk app/build/outputs/apk/driver.apk
+    - echo "Uploading to staging server"
+    - cat version_$CI_JOB_STAGE.json | jq --arg r "$CI_COMMIT_SHA" '.commit = $r' > version_updated.json
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE.apk
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE_$CI_COMMIT_SHA_SHOT_NAME.apk
+    - scp version_updated.json fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/version_$CI_JOB_STAGE.json
+    - echo "Uploading is finished"
+  when: manual
+  tags:
+    - android
+  only:
+    - dev    
+
+build_staging:
+  variables:
+    API_URL: "http://api2.test.fo-del.com"
+    GOOGLE_API_KEY_PARA: "AIzaSyBbkNEJlYAhdZc-9d2T3tM9OuFxuT-bsNE"
+    UPGRADE_URL: "http://resources2.test.fo-del.com/update/apk/driver/version_$CI_JOB_STAGE.json"
+
+  stage: staging
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - apt-get -qq update && apt-get install -qqy jq
+    - export VERSION_NAME=`jq -r .versionName version_$CI_JOB_STAGE.json`
+    - export VERSION_CODE=`jq -r .versionCode version_$CI_JOB_STAGE.json`
+    - export CI_COMMIT_SHA_SHOT_NAME=${CI_COMMIT_SHA:0:8}
+    - echo "./gradlew assembleStagingRelease -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#003399 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL"
+    - ./gradlew assembleStagingRelease -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#003399 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL
+    - ls app/build/outputs/apk/
+    - mv app/build/outputs/apk/*.apk app/build/outputs/apk/driver.apk
+    - echo "Uploading to staging server"
+    - cat version_$CI_JOB_STAGE.json | jq --arg r "$CI_COMMIT_SHA" '.commit = $r' > version_updated.json
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE.apk
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE_$CI_COMMIT_SHA_SHOT_NAME.apk
+    - scp version_updated.json fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/version_$CI_JOB_STAGE.json
+    - echo "Uploading is finished"
+  when: manual
+  tags:
+    - android
+
+
+build_training:
+  variables:
+    API_URL: "https://api-training.fo-del.com"
+    GOOGLE_API_KEY_PARA: "AIzaSyBbkNEJlYAhdZc-9d2T3tM9OuFxuT-bsNE"
+    UPGRADE_URL: "http://resources2.test.fo-del.com/update/apk/driver/version_$CI_JOB_STAGE.json"
+
+  stage: training
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - apt-get -qq update && apt-get install -qqy jq
+    - export VERSION_NAME=`jq -r .versionName version_$CI_JOB_STAGE.json`
+    - export VERSION_CODE=`jq -r .versionCode version_$CI_JOB_STAGE.json`
+    - export CI_COMMIT_SHA_SHOT_NAME=${CI_COMMIT_SHA:0:8}
+    - echo "./gradlew assembleTraining -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#626262 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL"
+    - ./gradlew assembleTraining -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#626262 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL
+    - ls app/build/outputs/apk/
+    - mv app/build/outputs/apk/*release.apk app/build/outputs/apk/driver.apk
+    - echo "Uploading to staging server"
+    - cat version_$CI_JOB_STAGE.json | jq --arg r "$CI_COMMIT_SHA" '.commit = $r' > version_updated.json
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE.apk
+    - scp app/build/outputs/apk/driver.apk fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE_$CI_COMMIT_SHA_SHOT_NAME.apk
+    - scp version_updated.json fodel_dev@52.232.33.210:/home/fodel_dev/solf/resources/update/apk/driver/version_$CI_JOB_STAGE.json
+    - echo "Uploading is finished"
+  when: manual
+  tags:
+    - android
+  only:
+    - master
+
+build_product:
+  variables:
+    API_URL: "https://api.fo-del.com"
+    GOOGLE_API_KEY_PARA: "AIzaSyD4TT4Xc4MZuFtZM6zcUyZyzZL_7bK_ty8"
+    UPGRADE_URL: "https://resources.fo-del.com/update/apk/driver/version_$CI_JOB_STAGE.json"
+
+  stage: product
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY_RESOURCE_PROD")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - apt-get -qq update && apt-get install -qqy jq
+    - export VERSION_NAME=`jq -r .versionName version_$CI_JOB_STAGE.json`
+    - export VERSION_CODE=`jq -r .versionCode version_$CI_JOB_STAGE.json`
+    - export CI_COMMIT_SHA_SHOT_NAME=${CI_COMMIT_SHA:0:8}
+    - echo "./gradlew assembleProduct -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#000000 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_OMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL"
+    - ./gradlew assembleProduct -PAPI_URL_PARA=$API_URL -PMENU_COLOR=#000000 -PVERSION_CODE_PARA=$VERSION_CODE -PVERSION_NAME_PARA=$VERSION_NAME" "$CI_COMMIT_SHA_SHOT_NAME -PGOOGLE_API_KEY_PARA=$GOOGLE_API_KEY_PARA -PUPGRADE=$UPGRADE_URL
+    - ls app/build/outputs/apk/
+    - mv app/build/outputs/apk/*release.apk app/build/outputs/apk/driver.apk
+    - echo "Uploading to staging server"
+    - cat version_$CI_JOB_STAGE.json | jq --arg r "$CI_COMMIT_SHA" '.commit = $r' > version_updated.json
+    - scp app/build/outputs/apk/driver.apk fodel_product@52.178.112.217:/home/fodel_product/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE.apk
+    - scp app/build/outputs/apk/driver.apk fodel_product@52.178.112.217:/home/fodel_product/solf/resources/update/apk/driver/driver_$CI_JOB_STAGE_$CI_COMMIT_SHA_SHOT_NAME.apk
+    - scp version_updated.json fodel_product@52.178.112.217:/home/fodel_product/solf/resources/update/apk/driver/version_$CI_JOB_STAGE.json
+    - echo "Uploading is finished"
+  when: manual
+  tags:
+    - android
+  only:
+    - master
+
+

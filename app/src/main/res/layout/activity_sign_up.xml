@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/et_first_name"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_margin="@dimen/x10"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/first_name_hint"
+                    android:singleLine="true" />
+
+
+                <EditText
+                    android:id="@+id/et_last_name"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_margin="@dimen/x10"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/last_name_hint"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/text_style_15sp_black"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y35"
+                android:layout_margin="@dimen/x10"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y35"
+                    android:layout_margin="@dimen/x10"
+                    android:ems="10"
+                    android:paddingLeft="@dimen/x60"
+                    android:hint="@string/phone_number_hint"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/edt_chosed_country_num"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/et_phone"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:paddingBottom="@dimen/y10"
+                    android:paddingLeft="@dimen/x5"
+                    android:text="+971"
+                    style="@style/text_style_15sp_black" />
+            </RelativeLayout>
+
+
+            <EditText
+                android:id="@+id/et_email_address"
+                style="@style/text_style_15sp_black"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y35"
+                android:layout_margin="@dimen/x10"
+                android:ems="10"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_city"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_margin="@dimen/x10"
+                    android:layout_weight="2"
+                    android:drawableRight="@drawable/select_bg"
+                    android:ems="10"
+                    android:hint="@string/city_hint"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_margin="@dimen/x10"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="@string/address_hint"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_driving_licence_number"
+                    style="@style/text_style_15sp_black"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_marginBottom="@dimen/x10"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_weight="4"
+                    android:ems="10"
+                    android:hint="@string/driving_licence_number_hint"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/img_licence"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_license" />
+
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_expiry_driving_licence"
+                style="@style/text_style_15sp_black"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y35"
+                android:layout_margin="@dimen/x10"
+                android:drawableRight="@drawable/select_bg"
+                android:ems="10"
+                android:hint="@string/driving_licence_expiry_hint"
+                android:singleLine="true" />
+
+
+            <Button
+                android:id="@+id/sign_up_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y40"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/x10"
+                android:background="@drawable/btn_selector"
+                android:text="@string/sign_up"
+                android:textColor="@color/light_green" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

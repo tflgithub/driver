@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.2"
+    dexOptions {
+        //不要对Lib分包
+        preDexLibraries = false
+        //很重要，不设置这个会有一个诡异的问题：finished with non-zero exit value 3
+        javaMaxHeapSize "4g"
+        incremental false
+    }
+
+    defaultConfig {
+        applicationId "com.dekaisheng.courier"
+        minSdkVersion 19
+        targetSdkVersion 22
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+//        manifestPlaceholders = [
+//
+//                GETUI_APP_ID    : "ob3NIRvPOs6KTXrE6dhpv4",
+//
+//                GETUI_APP_KEY   : "6uOhbaQxPo7mns7hZpg8n2",
+//
+//                GETUI_APP_SECRET: "UG2I0vcGAQ8wV782K5qRE2",
+//
+//                PACKAGE_NAME    : applicationId
+//        ]
+    }
+    //打包时忽略错误
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+
+                        // 应用名-版本号-版本名称-编译时间.apk
+                        def fileName = "Cashier-${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+    }
+}
+dependencies {
+    compile project(':alertView')
+    compile project(':library')
+    compile project(':promotedActionsLibrary')
+    //compile files('libs/core.jar')
+    compile files('libs/google_maps_android_api_utility library.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile files('libs/umeng-update-v2.6.0.1.jar')
+    compile files('libs/xUtils-2.6.14.jar')
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.android.support:appcompat-v7:22+'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:22+'
+    //    compile 'com.getui:sdk:+'
+    //    compile 'com.getui:ext:2.0.3'
+    compile files('libs/jpush-android-2.1.0.jar')
+    compile files('libs/locSDK_6.23.jar')
+    compile files('libs/ZXing-core-3.2.1.jar')
+    compile files('libs/swipeMenuListView.jar')
+    compile project(':android_auto_update')
+}
+/**一些在二级Dex加载之前,可能会被调用到的类(比如静态变量的类),需要放在主Dex中.否则会ClassNotFoundError.
+
+ 通过修改Gradle,可以显式的把一些类放在Main Dex中.**/
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = ['--multi-dex']
+        } else {
+            dx.additionalParameters += '--multi-dex'
+        }
+    }
+}
+
+android.applicationVariants.all {
+    variant ->
+        dex.doFirst {
+            dex ->
+                if (dex.additionalParameters == null) {
+                    dex.additionalParameters = []
+                }
+                dex.additionalParameters += '--set-max-idx-number=48000'
+        }
+}

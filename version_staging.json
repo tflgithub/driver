@@ -1,0 +1,8 @@
+{
+  "commit": "SOME HASH",
+  "url":"http://resources2.test.fo-del.com/update/apk/driver/driver_staging.apk",
+  "versionCode":1,
+  "versionName":"v1.0",
+  "updateMessage":"1. change the style of the driver",
+  "forceUpdate":1
+}

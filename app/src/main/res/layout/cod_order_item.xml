@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/border_line"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/text_style_15sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="@dimen/x15"
+        android:text="201009" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/text_style_15sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:padding="@dimen/x15"
+        android:text="10 AED" />
+</RelativeLayout>

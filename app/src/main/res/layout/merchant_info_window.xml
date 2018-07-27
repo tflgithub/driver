@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="@dimen/x10">
+
+    <LinearLayout
+        android:layout_width="@dimen/x100"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_shop_name"
+                style="@style/text_style_15sp_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x5"
+                android:text="22" />
+
+            <ImageButton
+                android:id="@+id/img_route_btn"
+                style="@style/text_style_15sp_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:focusable="false"
+                android:padding="@dimen/x10"
+                android:src="@drawable/selector_item_route" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_site_id"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x5"
+            android:text="ddww" />
+
+        <TextView
+            android:id="@+id/tv_area"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x5"
+            android:text="22" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/work_status_layout"
+        android:layout_width="@dimen/x100"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/x5" />
+
+    <LinearLayout
+        android:id="@+id/type_mark_layout"
+        android:layout_width="@dimen/x100"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/x5" />
+
+</LinearLayout>

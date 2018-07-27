@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sifl="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:navigationIcon="@drawable/menu_selector"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/head_title" />
+
+                <ImageView
+                    android:id="@+id/iv_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x5"
+                    android:src="@drawable/selector_draw_clear" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="@dimen/x5"
+                        android:src="@drawable/message_selector" />
+
+                    <ImageView
+                        android:id="@+id/iv_message"
+                        android:layout_width="@dimen/x10"
+                        android:layout_height="@dimen/x10"
+                        android:layout_marginTop="@dimen/x5"
+                        android:src="@drawable/message_red"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <LinearLayout
+            android:id="@+id/ly_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+    <fodel.com.fodelscanner.view.ScrimInsetsFrameLayout
+        android:id="@+id/sf_menu"
+        android:layout_width="@dimen/x260"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        sifl:insetForeground="#4000">
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/drawer_options"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#dd111111" />-->
+        <ExpandableListView
+            android:id="@+id/expanded_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#dd111111" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_version_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/x5"
+                android:layout_alignParentBottom="true"
+                android:textSize="12sp"
+                android:text="2.0"
+                android:textColor="@color/light_grey" />
+        </RelativeLayout>
+    </fodel.com.fodelscanner.view.ScrimInsetsFrameLayout>
+
+</android.support.v4.widget.DrawerLayout>

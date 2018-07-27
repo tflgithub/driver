@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/y70"
+        android:orientation="horizontal"
+        android:padding="@dimen/y15" >
+
+        <TextView
+            android:id="@+id/login_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y40"
+            android:layout_weight="1"
+            android:background="@drawable/selector_splash_login"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/signup_btn"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/y40"-->
+            <!--android:layout_marginLeft="@dimen/x10"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/selector_splash_signup"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/sign_up"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="15sp" />-->
+    </LinearLayout>
+
+</RelativeLayout>

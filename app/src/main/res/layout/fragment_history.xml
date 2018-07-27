@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_start_date"
+            style="@style/text_style_15sp_black"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:hint="Start Date"
+            android:padding="@dimen/x10"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/edit_end_date"
+            style="@style/text_style_15sp_black"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:hint="End Date"
+            android:padding="@dimen/x10"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:padding="@dimen/x5"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_type"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:layout_marginBottom="@dimen/x10"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/x5">
+
+        <RadioButton
+            android:id="@+id/rb_client"
+            style="@style/text_style_13sp_black"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:text="Client"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_merchant"
+            style="@style/text_style_13sp_black"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:text="Merchant"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_all"
+            style="@style/text_style_13sp_black"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y30"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="All"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null" />
+
+    </RadioGroup>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_pickup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="@drawable/btn_selector"
+        android:padding="@dimen/x10"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_pickup_name"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tv_amount"
+            android:gravity="center"
+            android:text="Pickup" />
+
+        <TextView
+            android:id="@+id/tv_pickup_amount"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/jinru_normal"
+            android:text="2 parcels" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_deliver"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="@color/white"
+        android:padding="@dimen/x10"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_deliver_name"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tv_amount"
+            android:gravity="center"
+            android:text="Deliver" />
+
+        <TextView
+            android:id="@+id/tv_deliver_amount"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/jinru_normal"
+            android:text="2 parcels" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_cod"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="@drawable/btn_selector"
+        android:padding="@dimen/x10"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_cod_name"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tv_amount"
+            android:gravity="center"
+            android:text="Cod" />
+
+        <TextView
+            android:id="@+id/tv_cod_amount"
+            style="@style/text_style_15sp_black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/jinru_normal"
+            android:text="200 AED" />
+
+    </RelativeLayout>
+</LinearLayout>

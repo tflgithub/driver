@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textView"
+    style="@style/text_style_12sp_white"
+    android:layout_width="@dimen/x120"
+    android:layout_height="wrap_content"
+    android:background="@color/deep_green"
+    android:padding="@dimen/x3"
+    android:gravity="center"
+    android:text="Cod :200.0000 AED"/>

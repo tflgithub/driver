@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">FO-DEL Ope</string>
+    <string name="scan_text">Barcode</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="toast_tips_google_service_not_avaliable">Google Service is not valuable</string>
+    <string name="toast_tips_route_not_found">Can not find the route</string>
+    <string name="toast_tips_route_zero_result">Zero results found</string>
+    <string name="toast_tips_route_max_waypoints_exceeded">Max way points exceeded</string>
+    <string name="toast_tips_route_invalid_request">Invalid request</string>
+    <string name="toast_tips_route_over_query_limit">Over query limit</string>
+    <string name="toast_tips_route_request_denied">Request denied</string>
+    <string name="toast_tips_route_unknow_error">Unknow error</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email or Phone</string>
+    <string name="prompt_password">Password</string>
+    <string name="no_network">No network connection</string>
+    <string name="exit_tip">Login account on another device, you have to exit</string>
+    <string name="profile">Profile</string>
+    <string name="history">History</string>
+    <string name="cash_collection">Cash collection</string>
+    <string name="sign_Up">Sign Up</string>
+    <string name="notification">Notification</string>
+    <string name="details">Details</string>
+    <string name="help">Help</string>
+    <string name="scanner">Scanner</string>
+    <string name="menu_cod_management">COD Management</string>
+    <string name="menu_search">Search</string>
+    <string name="loading">Loading...</string>
+
+    <string name="exit_account">Exit from the current account</string>
+    <string name="exit_app">Exit app</string>
+
+    <string name="change_portrait_dialog_select_photo">Choose From Library</string>
+    <string name="change_portrait_dialog_take_photo">Take Photo</string>
+    <string name="activity_home_new_start_address">My Location</string>
+    <string name="no_information">No information</string>
+    <string name="pickup">Returns</string>
+    <string name="delivery">Deliveries</string>
+
+    <string name="login">Log in</string>
+    <string name="sign_up">Sign up</string>
+
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="password_hint">PassWord</string>
+    <string name="city_hint">City</string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="address_hint">Address</string>
+    <string name="email_hint">Email</string>
+    <string name="driving_licence_number_hint">Driving Licence Number</string>
+    <string name="driving_licence_expiry_hint">Driving Licence Expiry</string>
+
+    <string name="scan_at_warehouse">Scan at warehouse</string>
+    <string name="scan_at_shop">Scan at shop</string>
+
+    <string name="pick_up_for">Pickup for</string>
+    <string name="pick_up_scan_for">Pickup Scan for</string>
+    <string name="pick_up_finalize_for">Pickup Finalize for</string>
+
+    <string name="check_in_for">Check-In for </string>
+    <string name="check_in_scan_for">Check-In Scan for</string>
+    <string name="check_in_finalize_for">Check-In Finalize for</string>
+
+    <string name="return_pick_up_for">Return PickUp for</string>
+    <string name="return_pick_up_scan_for">Return PickUp Scan for</string>
+
+    <string name="warehouse_pick_up">Warehouse Pick up</string>
+    <string name="warehouse_check_in">Warehouse Check in</string>
+
+    <string name="ecommerce_pickup">E-commerce Pickup</string>
+    <string name="ecommerce_checkin">E-commerce Check-In</string>
+    <string name="merchant_pickup">Merchant Pickup</string>
+    <string name="merchant_checkin">Merchant Check-In</string>
+    <string name="cod_collection">Cod collection</string>
+    <string name="cod_collection_for">Cod collection for</string>
+    <string name="merchant_actions">Merchant Actions</string>
+
+    <string name="verify">Verification submit</string>
+    <string name="finalize">finalize</string>
+    <string name="receive">Receive money</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

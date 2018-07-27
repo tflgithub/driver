@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y40"
+    android:background="@color/white">
+
+    <fodel.com.fodelscanner.view.CircleTextView
+        android:id="@+id/tv_amount"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/x30"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/x5"
+        android:paddingLeft="@dimen/x5"
+        android:paddingRight="@dimen/x5"
+        android:paddingTop="@dimen/x5"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:paintNormalColor="@color/red_01" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/text_style_15sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/tv_amount"
+        android:gravity="center"
+        android:text="Client" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/jinru_normal" />
+
+</RelativeLayout>

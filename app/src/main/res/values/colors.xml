@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+    <color name="white">#ffffff</color>
+
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+
+    <color name="light_grey">#e6e6e6</color>
+    <color name="gray">#a4a4a4</color>
+
+
+    <color name="light_green">#009688</color>
+    <color name="red">#e03e46</color>
+
+    <color name="orange">#FF8040</color>
+    <color name="deep_green">#13D68F</color>
+    <color name="deep_red">#85150a</color>
+
+    <color name="green_01">#1B934B</color>
+    <color name="red_01">#B34137</color>
+    <color name="yellow_01">#C79735</color>
+
+    <color name="green_02">#91e0be</color>
+</resources>

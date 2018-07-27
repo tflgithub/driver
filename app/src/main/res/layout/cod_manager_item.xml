@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_selector"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="@dimen/x5">
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true" />
+
+
+    <TextView
+        android:id="@+id/tv_bill_no"
+        style="@style/text_style_13sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/cb"
+        android:text="122111" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        style="@style/text_style_13sp_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="AED 100" />
+
+
+</RelativeLayout>
